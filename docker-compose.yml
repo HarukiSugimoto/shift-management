@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   frontend:
     container_name: frontend
@@ -33,8 +31,8 @@ services:
     volumes:
       - db_data:/var/lib/mysql:cached
     environment:
-      MYSQL_DATABASE: portfolio-laravel-react
-      MYSQL_USER: portfolio-laravel-react
+      MYSQL_DATABASE: shift-management
+      MYSQL_USER: shift-management
       MYSQL_PASSWORD: password
       MYSQL_ROOT_PASSWORD: password
       TZ: "Asia/Tokyo"
