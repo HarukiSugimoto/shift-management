@@ -5,6 +5,7 @@ import { formErrorMessages } from '@/constants/formErrorMessages';
 import React, { useState } from 'react';
 import { authApiClient } from '@/external';
 import { ensureCsrfCookie } from '@/lib/csrf';
+import { useAdminLoginSessionContext } from '@/context/admin/adminLoginSessionContext';
 // Zodスキーマの定義
 const signInFormSchema = z.object({
     email: z
@@ -22,6 +23,7 @@ export const useStaffSignInForm = (option?: { submitSuccessCallback: () => void 
   const [isLoginSucceeded, setIsLoginSucceeded] = React.useState(false);
   const [isShowPassword, setIsShowPassword] = React.useState(false);
   const toggleShowPassword = React.useCallback(() => setIsShowPassword((before) => !before), []);
+  const { refetchSession } = useAdminLoginSessionContext();
   const signInForm = useForm<z.infer<typeof signInFormSchema>>({
     resolver: zodResolver(signInFormSchema),
     defaultValues: {
@@ -44,7 +46,8 @@ export const useStaffSignInForm = (option?: { submitSuccessCallback: () => void 
       console.log('Login response:', response);
       if (response.ok) {
         console.log('Login successful');
-        
+        refetchSession();
+
         setIsLoginSucceeded(true);
         if (option?.submitSuccessCallback) {
           option.submitSuccessCallback();
