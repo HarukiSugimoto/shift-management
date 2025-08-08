@@ -7,6 +7,8 @@ Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::middleware('api')->group(function () {
-    require base_path('routes/auth.php');
-});
+// Route::middleware('api')->group(function () {
+//     require base_path('routes/auth.php');
+// });
+
+// Route::prefix('auth')->middleware('api')->group(base_path('routes/auth.php'));
