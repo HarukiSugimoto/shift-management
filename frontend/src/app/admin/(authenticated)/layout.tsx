@@ -1,5 +1,5 @@
 import { Business, Logout, People } from "@mui/icons-material";
-import { RootLayout } from "@/components/common/layout/RootLayout";
+import { AdminRootLayout } from "@/components/common/layout/AdminRootLayout";
 import { Outlet } from "react-router-dom";
 
 const menuItems = [
@@ -17,11 +17,11 @@ const menuItems = [
 ];
 export const AdminAuthenticatedLayout = () => {
     return (
-        <RootLayout
+        <AdminRootLayout
             title="管理画面"
             menuItems={menuItems}
         >
             <Outlet />
-        </RootLayout>
+        </AdminRootLayout>
     );
 };

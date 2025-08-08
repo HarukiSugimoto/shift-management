@@ -1,17 +1,18 @@
-import { Login } from "@mui/icons-material";
-import { RootLayout } from "@/components/common/layout/RootLayout";
+import { Home, Login } from "@mui/icons-material";
+import { AdminRootLayout } from "@/components/common/layout/AdminRootLayout";
 import { Outlet } from "react-router-dom";
 
 const menuItems = [
-    { text: "ログイン", icon: <Login />, href: "/admin/attendance" },
+    { text: "ホーム", icon: <Home />, href: "/admin/unauthenticated" },
+    { text: "ログイン", icon: <Login />, href: "/admin/unauthenticated/sign-in" },
 ];  
 export const AdminUnauthenticatedLayout = () => {
     return (
-        <RootLayout
+        <AdminRootLayout
             title="管理画面"
             menuItems={menuItems}
         >
             <Outlet />
-        </RootLayout>
+        </AdminRootLayout>
     );
 };

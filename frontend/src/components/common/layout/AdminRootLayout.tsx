@@ -12,11 +12,11 @@ import {
     ListItemButton,
 } from "@mui/material";
 import { Menu } from "@mui/icons-material";
-import { useState } from "react";
 import { ColorModeToggle } from '@/components/common/layout/ColorModeToggle';
 import { NotificationButton } from "./NotificationButton";
+import { useDrawer } from "@/context/DrawerContext";
 
-interface RootLayoutProps {
+interface AdminRootLayoutProps {
     title: string;
     menuItems: {
         text: string;
@@ -29,8 +29,8 @@ interface RootLayoutProps {
 const drawerWidth = 300;
 const appBarHeight = 64; // AppBarの高さ（px）
 
-export const RootLayout: React.FC<RootLayoutProps> = (props) => {
-    const [drawerOpen, setDrawerOpen] = useState(false);
+export const AdminRootLayout: React.FC<AdminRootLayoutProps> = (props) => {
+    const { isOpen: drawerOpen, toggleDrawer } = useDrawer();
 
     return (
         <Box sx={{ display: "flex" }}>
@@ -40,7 +40,7 @@ export const RootLayout: React.FC<RootLayoutProps> = (props) => {
                 <IconButton
                     color="inherit"
                     edge="start"
-                    onClick={() => setDrawerOpen(!drawerOpen)}
+                    onClick={() => toggleDrawer()}
                     sx={{ mr: 2 }}
                 >
                     <Menu />
@@ -89,9 +89,7 @@ export const RootLayout: React.FC<RootLayoutProps> = (props) => {
                     transition: "margin-left 0.3s",
                 }}
             >
-                <Typography variant="body1">
-                    {props.children}
-                </Typography>
+                {props.children}
             </Box>
         </Box>
     );
