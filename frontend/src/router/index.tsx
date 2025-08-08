@@ -3,8 +3,9 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import type { RouteObject } from 'react-router-dom';
 import { RootErrorPage } from '@/app/error';
 import { NotFoundPage } from '@/app/not-found';
-import { AdminAuthenticatedLayout } from '@/app/admin/(authenticated)/layout';
-import { AdminUnauthenticatedLayout } from '@/app/admin/(unauthenticated)/layout';
+import { adminAuthenticatedRoutes } from './admin/adminAuthenticatedRoutes';
+import { AdminRootLayout } from '@/app/admin/layout';
+import { adminUnauthenticatedRoutes } from './admin/adminUnauthenticatedRoutes';
 
 const routes: RouteObject[] = [
   {
@@ -14,11 +15,13 @@ const routes: RouteObject[] = [
     children: [
       {
         path: 'admin/authenticated',
-        element: <AdminAuthenticatedLayout />
+        element: <AdminRootLayout />,
+        children: [adminAuthenticatedRoutes]
       },
       {
         path: 'admin/unauthenticated',
-        element: <AdminUnauthenticatedLayout />
+        element: <AdminRootLayout />,
+        children: [adminUnauthenticatedRoutes]
       },
       {
         path: '*',

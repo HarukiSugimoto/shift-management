@@ -1,9 +1,17 @@
+import { Login } from "@mui/icons-material";
+import { RootLayout } from "@/components/common/layout/RootLayout";
+import { Outlet } from "react-router-dom";
+
+const menuItems = [
+    { text: "ログイン", icon: <Login />, href: "/admin/attendance" },
+];  
 export const AdminUnauthenticatedLayout = () => {
     return (
-        <div>
-        {/* Admin authenticated layout content goes here */}
-        <h1>Admin Unauthenticated Layout</h1>
-        {/* You can add more components or routes here */}
-        </div>
+        <RootLayout
+            title="管理画面"
+            menuItems={menuItems}
+        >
+            <Outlet />
+        </RootLayout>
     );
-}
+};
