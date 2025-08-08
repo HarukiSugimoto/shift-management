@@ -1,3 +1,8 @@
+# このレポジトリ
+シフト管理システムを作ってます。構想も同時並行で行っています
+アジャイル開発&スキーマ駆動でやってます。勉強のため1から作ってます
+![仕様書](https://docs.google.com/document/d/1CRA2LfTNlGeMM-QRe9f74yHb_kAhagqQTkv2Ec1puR8/edit?tab=t.0)
+# ER図
 ```mermaid
 erDiagram
     User {
