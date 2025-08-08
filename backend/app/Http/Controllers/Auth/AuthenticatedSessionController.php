@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Auth;
 class AuthenticatedSessionController extends Controller
 {
     /**
-     * Handle an incoming authentication request.
+     * ログイン
      */
     public function store(LoginRequest $request): Response
     {
@@ -23,7 +23,7 @@ class AuthenticatedSessionController extends Controller
     }
 
     /**
-     * Destroy an authenticated session.
+     * ログアウト
      */
     public function destroy(Request $request): Response
     {
